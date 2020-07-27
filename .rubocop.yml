@@ -1,0 +1,75 @@
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.6
+  Exclude:
+    - '.ebextenstions/**/*'
+    - '.git/**/*'
+    - 'bin/**/*'
+    - 'certs/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/DateTime:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false # This is an unsafe setting which has the potential to introduce bugs because nil == 0 is false, where nil.zero? throws an exception.
+
+Lint/SuppressedException:
+  AllowComments: true
