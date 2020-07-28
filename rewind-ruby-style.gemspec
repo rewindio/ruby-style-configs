@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
     s.platform    = Gem::Platform::RUBY
-    s.name        = "rubocop-rewind"
-    s.version     = "1.0.1"
+    s.name        = "rewind-ruby-style"
+    s.version     = "1.0.2"
     s.summary     = "Rewind's style guide for Ruby."
-    s.description = "Gem containing the rubocop.yml config that corresponds to "\
+    s.description = "Gem containing the config files for style chekers that corresponds to "\
       "the implementation of the Rewind style guide for Ruby."
   
     s.license = "MIT"
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
     s.email    = "team@rewind.io"
     s.homepage = "https://github.com/rewindio/ruby-style-configs/"
   
-    s.files = ["rubocop.yml"]
+    s.files = ["rubocop.yml", "reek.yml"]
   
     s.metadata = {
       "source_code_uri" => "https://github.com/rewindio/ruby-style-configs/tree/v#{s.version}",

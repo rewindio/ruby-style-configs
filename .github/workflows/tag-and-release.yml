@@ -4,7 +4,7 @@ on:
   push:
     branches: 
       - main
-    paths: 'rubocop-rewind.gemspec'
+    paths: 'rewind-ruby-style.gemspec'
 
 jobs:
   release:
@@ -21,8 +21,8 @@ jobs:
     - name: Get version
       id: get_version
       run: |
-        version_file=rubocop-rewind.gemspec
-        version=$(grep '^[[:blank:]]*s.version' rubocop-rewind.gemspec |awk '{print $3}' |tr -d '"')
+        version_file=rewind-ruby-style.gemspec
+        version=$(grep '^[[:blank:]]*s.version' rewind-ruby-style.gemspec |awk '{print $3}' |tr -d '"')
         echo ::set-output name=version::$version
         echo ::set-output name=version_tag::v$version
 
