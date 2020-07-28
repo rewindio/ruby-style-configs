@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
     s.platform    = Gem::Platform::RUBY
     s.name        = "rubocop-rewind"
-    s.version     = "1.0.0"
+    s.version     = "1.0.1"
     s.summary     = "Rewind's style guide for Ruby."
     s.description = "Gem containing the rubocop.yml config that corresponds to "\
       "the implementation of the Rewind style guide for Ruby."
