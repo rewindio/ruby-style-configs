@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [1.0.4]
+
+- Exclude Gemfiles in subfolders
+- Exclude Gemfiles with non-standard names
+
 ## [1.0.3]
 
 - Push gem to rubygems instead of github packages
