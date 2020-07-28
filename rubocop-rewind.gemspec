@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
     s.files = ["rubocop.yml"]
   
     s.metadata = {
-      "source_code_uri" => "https://github.com/rewindio/ruby-style-configs/tree/v#{s.version}"
+      "source_code_uri" => "https://github.com/rewindio/ruby-style-configs/tree/v#{s.version}",
+      "github_repo" => "ssh://github.com/rewindio/ruby-style-configs"
     }
   
     s.add_dependency("rubocop", ">= 0.80", "< 0.87")
