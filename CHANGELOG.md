@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.0.3]
+
+- Push gem to rubygems instead of github packages
+
 ## [1.0.2]
 
 - Rename gem
