@@ -1,0 +1,71 @@
+name: tag-and-release
+
+on:
+  push:
+    branches: 
+      - main
+    paths: 'rubocop-rewind.gemspec'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+
+    - name: Get version
+      id: get_version
+      run: |
+        version_file=rubocop-rewind.gemspec
+        version=$(grep '^[[:blank:]]*s.version' rubocop-rewind.gemspec |awk '{print $3}' |tr -d '"')
+        echo ::set-output name=version::$version
+        echo ::set-output name=version_tag::v$version
+
+    - name: Tag commit
+      uses: tvdias/github-tagger@v0.0.1
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        tag: "${{steps.get_version.outputs.version_tag}}"
+
+    - name: Upload to Github Packages
+      env:
+        PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        set +e
+        mkdir -p ~/.gem
+        touch ~/.gem/credentials
+        chmod 600 ~/.gem/credentials
+        echo ":github: Bearer ${PACKAGES_TOKEN}" >> ~/.gem/credentials
+
+        gemspec=$(ls *gemspec* | head -1)
+        gem build $gemspec
+        gem_name=$(ls -t *.gem | head -1)
+        output=$(gem push --key github --host "https://rubygems.pkg.github.com/rewindio" *.gem)
+
+        if [[ $output != *"Successfully"* ]]; then
+          echo "Error uploading to Github Packages: $output"
+          rm -f ~/.gem/credentials
+          exit 1
+        else
+          echo "Successfully uploaded to Github Packages: $output"
+          rm -f ~/.gem/credentials
+        fi
+
+    - name: Extract from changelog
+      id: extract_changes
+      run: |
+        # Must use a temporary file or it loses the formatting
+        VERSION=${{steps.get_version.outputs.version}}; awk "/## \[$VERSION\]/{flag=1;next}/## \[/{flag=0}flag" CHANGELOG.md > REL-BODY.md
+        
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{steps.get_version.outputs.version_tag}}
+        artifacts: "*.gem, CHANGELOG.md"
+        bodyFile: "REL-BODY.md"
+        token: ${{ secrets.GITHUB_TOKEN }}
