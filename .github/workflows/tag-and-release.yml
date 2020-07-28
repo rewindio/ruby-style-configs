@@ -34,25 +34,25 @@ jobs:
 
     - name: Upload to Github Packages
       env:
-        PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
       run: |
         set +e
         mkdir -p ~/.gem
         touch ~/.gem/credentials
         chmod 600 ~/.gem/credentials
-        echo ":github: Bearer ${PACKAGES_TOKEN}" >> ~/.gem/credentials
+        echo ":rubygems_api_key: ${RUBYGEMS_API_KEY}" >> ~/.gem/credentials
 
         gemspec=$(ls *gemspec* | head -1)
         gem build $gemspec
         gem_name=$(ls -t *.gem | head -1)
-        output=$(gem push --key github --host "https://rubygems.pkg.github.com/rewindio" *.gem)
+        output=$(gem push *.gem)
 
         if [[ $output != *"Successfully"* ]]; then
-          echo "Error uploading to Github Packages: $output"
+          echo "Error uploading to Rubygems: $output"
           rm -f ~/.gem/credentials
           exit 1
         else
-          echo "Successfully uploaded to Github Packages: $output"
+          echo "Successfully uploaded to Rubygems: $output"
           rm -f ~/.gem/credentials
         fi
 
