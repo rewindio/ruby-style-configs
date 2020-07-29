@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.0.8]
+
+- Disable ClassAndModuleChildren
+
 ## [1.0.7]
 
 - Remove trailing commas in collection literals
