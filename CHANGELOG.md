@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.0.7]
+
+- Remove trailing commas in collection literals
+
+## [1.0.6]
+
+- Exclude gemspecs from MethodCallWithArgsParentheses
+
 ## [1.0.5]
 
 - Update minimum rubocop version
@@ -20,7 +28,7 @@
 
 ## [1.0.1]
 
-- Baseline Rubocop config from the Shopify one https://shopify.github.io/ruby-style-guide/rubocop.yml
+- Baseline Rubocop config from the Shopify one <https://shopify.github.io/ruby-style-guide/rubocop.yml>
 
 ## [1.0.0]
 
