@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.0.5]
+
+- Update minimum rubocop version
+
 ## [1.0.4]
 
 - Exclude Gemfiles in subfolders
