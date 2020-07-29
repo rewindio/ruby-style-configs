@@ -94,10 +94,7 @@ Layout/CaseIndentation:
   IndentationWidth:
 
 Style/ClassAndModuleChildren:
-  EnforcedStyle: nested
-  SupportedStyles:
-    - nested
-    - compact
+  Enabled: false
 
 Style/ClassCheck:
   EnforcedStyle: is_a?
