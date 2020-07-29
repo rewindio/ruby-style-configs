@@ -277,6 +277,8 @@ Style/MethodCallWithArgsParentheses:
   - Gemfile.*
   - '**/**/Gemfile'
   - '**/**/Gemfile.*'
+  - '*.gemspec'
+  - '**/**/*.gemspec'
 
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
