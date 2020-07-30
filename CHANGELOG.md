@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.0.9]
+
+- Revert to more permissive config (for now)
+
 ## [1.0.8]
 
 - Disable ClassAndModuleChildren
