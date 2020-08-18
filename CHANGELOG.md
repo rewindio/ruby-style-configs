@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.0.10]
+
+- Enable the Lint/Debugger cop (checks for pry)
+
 ## [1.0.9]
 
 - Revert to more permissive config (for now)

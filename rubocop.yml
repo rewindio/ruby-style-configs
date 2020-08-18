@@ -84,3 +84,6 @@ Style/NumericPredicate:
 
 Lint/SuppressedException:
   AllowComments: true
+
+Lint/Debugger:
+  Enabled: true
