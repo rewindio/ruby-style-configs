@@ -62,6 +62,6 @@ Style/HashEachMethods:
 
 Style/AsciiComments:
   Enabled: false
-
+# This is an unsafe setting which has the potential to introduce bugs because nil == 0 is false, where nil.zero? throws an exception.
 Style/NumericPredicate:
-  Enabled: false # This is an unsafe setting which has the potential to introduce bugs because nil == 0 is false, where nil.zero? throws an exception.
+  Enabled: false 
