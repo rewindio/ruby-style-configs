@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
 
   s.files = ['rubocop.yml', 'reek.yml']
 
+  s.required_ruby_version = '>= 2.6'
+
   s.metadata = {
     'source_code_uri' => "https://github.com/rewindio/ruby-style-configs/tree/v#{s.version}"
   }
