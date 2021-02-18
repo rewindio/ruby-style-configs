@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
     'source_code_uri' => "https://github.com/rewindio/ruby-style-configs/tree/v#{s.version}"
   }
 
-  s.add_dependency('rubocop', '>= 0.85', '< 0.89')
+  s.add_dependency('rubocop', '~1.10')
 end
