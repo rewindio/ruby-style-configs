@@ -75,6 +75,8 @@ Gemspec/DateAssignment: # (new in 1.10)
   Enabled: true
 Layout/SpaceBeforeBrackets: # (new in 1.7)
   Enabled: true
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_first_argument  
 Lint/AmbiguousAssignment: # (new in 1.7)
   Enabled: true
 Lint/DeprecatedConstants: # (new in 1.8)
