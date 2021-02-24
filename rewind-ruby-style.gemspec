@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name        = 'rewind-ruby-style'
-  s.version     = '1.0.11'
+  s.version     = '1.1.0'
   s.summary     = "Rewind's style guide for Ruby."
   s.description = 'Gem containing the config files for style chekers that corresponds to '\
     'the implementation of the Rewind style guide for Ruby.'
