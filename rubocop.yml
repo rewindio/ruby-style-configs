@@ -3,6 +3,7 @@ AllCops:
   TargetRubyVersion: 2.6
   SuggestExtensions: false
   StyleGuideBaseURL: https://github.com/rewindio/ruby-style-configs/
+  NewCops: disable
   Exclude:
     - '.ebextenstions/**/*'
     - '.git/**/*'
