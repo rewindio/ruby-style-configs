@@ -1,0 +1,43 @@
+name: "Label Emergency Change"
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    name: Label if Needed
+
+    steps:
+      - name: Verifiy Reviewers
+        id: verify_reviewers
+        uses: docker://rewindio/is-pr-approved
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          REPO_ACCESS_PAT: ${{ secrets.CONTAINER_REGISTRY_PAT }}
+
+      - name: Print Review Status
+        env:
+          reviewed: ${{ steps.verify_reviewers.outputs.reviewed }}
+        run:
+          echo "The pr review status is $reviewed"
+
+      - name: Apply Emergency Change Label
+        if: steps.verify_reviewers.outputs.reviewed == 'false'
+        uses: actions-ecosystem/action-add-labels@v1 
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          labels: |
+            emergency-change
+
+      - name: Notify Slack if Label Applied
+        if: steps.verify_reviewers.outputs.reviewed == 'false'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: 'devops-emergency-changes'
+          SLACK_ICON: 'bell'
+          SLACK_WEBHOOK: ${{ secrets.BACKHUB_SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: A PR was merged without the required number of reviewers ${{ github.event.pull_request._links.html.href}}
+          SLACK_COLOR: '#bd3232'
