@@ -1,24 +1,31 @@
-- name: hotfix
-  color: 63488F
-  description: "The fix is hot"
-- name: feature
-  color: EFECEC
-  description: "All features, all the time"
+- name: 'bridge period'
+  color: 4A706C
+  description: "Issues and PRs for the bridge period"
+
+- name: 'bug'
+  color: e11d21
+  description: "A defect"
+
 - name: dependencies
   color: 0366d6
   description: "Pull requests that update a dependency file"
+
+- name: 'feature'
+  color: 0052cc
+  description: "All features, all the time"
+
+- name: help
+  color: 0e8a16
+  description: "We need some documentation updating"
+
+- name: support
+  color: fbca04
+  description: "Issues directly relating to a support case"
+
 - name: security
   color: ee0701
-  description: "Pull requests that update a dependency file"
-- name: javascript
-  color: a9f9b3
-  description: "Pull requests that affects JS code"
-- name: ruby
-  color: e1ea64
-  description: "Pull requests that affects ruby code"
-- name: automerge
-  color: 006b75
-  description: "Set by dependabot for PRs that can be auto-merged"
+  description: "Issues and PR that relate to security"
+
 - name: emergency-change
   color: E99695
   description: "A PR that has to be deployed to production due to an emergency conditon"

@@ -11,24 +11,28 @@ jobs:
       - uses: actions/checkout@1.0.0
 
       - name: Sync Labels 
-        uses: crazy-max/ghaction-github-labeler@v1
+        uses: crazy-max/ghaction-github-labeler@v3
         with:
-          yaml_file: .github/labels.yml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/labels.yml
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Apply Label 
-        uses: actions/github-script@0.2.0
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_HEAD_REF} | tr '[:upper:]' '[:lower:]')"
+        id: extract_branch
+
+      - name: Apply Hotfix Label
+        if: startsWith(steps.extract_branch.outputs.branch,'hotfix')
+        uses: actions-ecosystem/action-add-labels@v1 
         with:
-          github-token: ${{github.token}}
-          script: |
-            const branch_name = context.payload.pull_request.head.ref.toLowerCase()
-            console.log("Detected source branch name: " + branch_name)
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          labels: |
+            hotfix
 
-            if (branch_name.includes("hotfix") ) {
-              console.log("Branch " + branch_name + " is a hotfix - applying Hotfix label")
-              github.issues.addLabels({...context.issue, labels: ['hotfix']})
-            } else if (branch_name.includes("feature") ) {
-              console.log("Branch " + branch_name + " is a feature - applying Feature label")
-              github.issues.addLabels({...context.issue, labels: ['feature']})
-            }
+      - name: Apply Feature Label
+        if: startsWith(steps.extract_branch.outputs.branch,'feature')
+        uses: actions-ecosystem/action-add-labels@v1 
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          labels: |
+            feature
