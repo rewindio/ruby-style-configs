@@ -29,3 +29,7 @@
 - name: emergency-change
   color: E99695
   description: "A PR that has to be deployed to production due to an emergency conditon"
+
+- name: hotfix
+  color: 63488F
+  description: "A bugfix for production"
